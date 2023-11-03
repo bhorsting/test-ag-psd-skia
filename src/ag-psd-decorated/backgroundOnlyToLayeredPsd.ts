@@ -1,6 +1,6 @@
 import { ImageData } from 'skia-canvas';
-import { Layer, Psd } from './index';
-import { CanvasNoGpu } from './skiaCanvasNoGpu';
+import { Layer, Psd } from './index.js';
+import { CanvasNoGpu } from './skiaCanvasNoGpu.js';
 
 const cloneCanvasAndImageData = (
   inputCanvas: CanvasNoGpu,
@@ -28,7 +28,7 @@ export const backgroundToLayer = (input: Psd) => {
     left: 0,
     bottom: input.height,
     right: input.width,
-    canvas: <any>canvasClone.canvas,
+    canvas: canvasClone.canvas as unknown as HTMLCanvasElement,
     blendMode: 'normal',
     opacity: 1,
     imageData: canvasClone.imageData,
